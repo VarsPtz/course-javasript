@@ -1,16 +1,6 @@
 "use strict";
 let money = +prompt("Ваш бюджет на месяц в рублях?", "20000"),
   time = prompt("Введите дату в формате YYYY-MM-DD", "2018-09-21"),
-  // expensesItem1 = prompt("Введите обязательную статью расходов в этом месяце", "интернет"),
-  // expensesCost1 = +prompt("Во сколько обойдется ?", "500"),
-  // expensesItem2 = prompt("Введите обязательную статью расходов в этом месяце", "сотовая связь"),
-  // expensesCost2 = +prompt("Во сколько обойдется ? ", "1000"),
-  // expenses = {
-  //   [expensesItem1]: expensesCost1,
-  //   [expensesItem2]: expensesCost2
-  // },
-  
-  
   optionalExpenses = {},
   income = [],
   appData = {
@@ -23,11 +13,20 @@ let money = +prompt("Ваш бюджет на месяц в рублях?", "200
     savings: false
   };
 
-//  appData.expenses.expensesItem1 = expensesCost1;
-//  appData.expenses.expensesItem2 = expensesCost2;
+for (let i = 0; i < 2; i ++) {
+  let a = prompt("Введите обязательную статью расходов в этом месяце", "интернет"),
+    b = +prompt("Во сколько обойдется ?", "500");
+  if ((typeof (a)) === 'string' && ((typeof (a)) != null) && ((typeof (b)) != null) &&
+    a != "" && b != "" && a.length < 50 && !isNaN(b)) {
+    console.log("done");
+    appData.expenses[a] = b;
+  } else {
+    console.log("что-то пошло не так");
+    alert("Вы ввели неправильные значения или пропустил одно из них. Пожалуйста, введите правильные значения!");
+    --i;
+  }
+};
 
-
-for i = 
 
 // let i = 0;
 // while (i < 2) {
