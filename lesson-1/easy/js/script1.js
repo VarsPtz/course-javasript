@@ -27,7 +27,6 @@ let money = +prompt("Ваш бюджет на месяц в рублях?", "200
 //  appData.expenses.expensesItem2 = expensesCost2;
 
 
-for i = 
 
 // let i = 0;
 // while (i < 2) {
