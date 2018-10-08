@@ -41,12 +41,12 @@ function chooseExpense() {
 
 chooseExpense();
 
-function detectDayBudge() {
+function detectDayBudget() {
   appData.moneyPerDay = Number(((appData.budget / 30).toFixed(2)));
   alert("Ваш бюджет на один день: " + ((appData.budget / 30).toFixed(2)) + " руб.");
 }
 
-detectDayBudge();
+detectDayBudget();
 
 
 function detectLevel() {
