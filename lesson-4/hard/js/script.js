@@ -19,7 +19,6 @@ function getFriendlyNumbers(start, end) {
                     pairsMass.push(num1);
                     pairsMass.push(i);
                     massOfCouples.push(pairsMass);
-                    //   pairsMass.length = 0;
                 }
                 pairsMass = [];
             }
