@@ -7,7 +7,7 @@ let massOfCouples = [],
 function getFriendlyNumbers(start, end) {
     let num1 = start.toFixed();
     let num2 = end.toFixed();
-    if (num1 >= num2 || isNaN(num1) || isNaN(num2) || num1 < 0 || num2 <= 0) {
+    if (num1 > num2 || isNaN(num1) || isNaN(num2) || num1 < 0 || num2 < 0) {
         console.log("Не соблюдены условия задачи. Выполнение прервано!");
         return false;
     } else {
@@ -24,8 +24,9 @@ function getFriendlyNumbers(start, end) {
             }
         }
     }
+    return massOfCouples;
 }
-getFriendlyNumbers(1, 1300,23);
+console.log(getFriendlyNumbers(1, 1210));
 
 function getDividersSum(num) {
     return getSum(getDividers(num));
