@@ -1,13 +1,9 @@
-'use strict';
-let massOfCouples = [],
-    pairsMass = [];
-
-
-
 function getFriendlyNumbers(start, end) {
-    let num1 = start.toFixed();
-    let num2 = end.toFixed();
-    if (num1 > num2 || isNaN(num1) || isNaN(num2) || num1 < 0 || num2 < 0) {
+    let massOfCouples = [],
+        pairsMass = [],
+        num1 = start,
+        num2 = end;
+    if (typeof(num1) == "string" || typeof(num2) == "string" || num1 > num2 || num1 < 0 || num2 < 0) {
         console.log("Не соблюдены условия задачи. Выполнение прервано!");
         return false;
     } else {
@@ -45,8 +41,13 @@ function getDividers(num) {
 function getSum(arr) {
     let sum = 0;
     for (var i = 0; i < arr.length; i++ ) {
-        sum += arr[i]
+        sum += arr[i];
     }
     return sum;
 }
 
+module.exports = {
+    firstName: 'Alexandr',
+    secondName: 'Varugin',
+    task: getFriendlyNumbers
+};
