@@ -45,7 +45,7 @@ function russianDaysOfWeek() {
         case 6:
             document.querySelector(".day").innerHTML = "Суббота";
         break;
-        case 7:
+        case 0:
             document.querySelector(".day").innerHTML = "Воскресенье";
         break;
         default:
@@ -66,7 +66,7 @@ function getResult() {
     console.log(diffDays);
     document.querySelector(".result-date").value = diffDays;
 }
-getResult();
+// getResult();
 
 document.querySelector(".users-button").onclick = function () {
     getResult();
