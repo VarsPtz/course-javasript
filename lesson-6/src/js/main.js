@@ -1,39 +1,33 @@
 "use strict";
 let startBtn = document.querySelector("#start"),
-  budgetValue = document.querySelector(".budget-value"),
-  dayBudgetValue = document.querySelector(".daybudget-value"),
-  levelValue = document.querySelector(".level-value"),
-  expensesValue = document.querySelector(".expenses-value"),
-  optionalexpensesValue = document.querySelector(".optionalexpenses-value"),
-  incomeValue = document.querySelector(".income-value"),
-  monthSavingsValue = document.querySelector(".monthsavings-value"),
-  yearSavingsValue = document.querySelector(".yearsavings-value"),
-  expensesItem = document.querySelectorAll(".expenses-item"),
-  expensesBtn = document.querySelectorAll("button")[0],
-  optionalExpensesBtn = document.querySelectorAll("button")[1],
-  countBtn = document.querySelectorAll("button")[2],
-  optionalExpensesItem = document.querySelectorAll(".optionalexpenses-item"),
-  expensesItem1Name = document.querySelectorAll(".expenses-item")[0],
-  expensesItem1Price = document.querySelectorAll(".expenses-item")[1],
-  expensesItem2Name = document.querySelectorAll(".expenses-item")[2],
-  expensesItem2Price = document.querySelectorAll(".expenses-item")[3],
-  incomeItem = document.querySelector(".choose-income"),
-  checkSavings = document.querySelector("#savings"),
-  sumValue = document.querySelector(".choose-sum"),
-  percentValue = document.querySelector(".choose-percent"),
-  yearValue = document.querySelector(".year-value"),
-  monthValue = document.querySelector(".month-value"),
-  dayValue = document.querySelector(".day-value"),
-  startCalculate = document.querySelectorAll("button")[3],
-  optionalExpensesItem1 = document.querySelectorAll(
-    ".optionalexpenses-item"
-  )[0],
-  optionalExpensesItem2 = document.querySelectorAll(
-    ".optionalexpenses-item"
-  )[1],
-  optionalExpensesItem3 = document.querySelectorAll(
-    ".optionalexpenses-item"
-  )[2];
+    budgetValue = document.querySelector(".budget-value"),
+    dayBudgetValue = document.querySelector(".daybudget-value"),
+    levelValue = document.querySelector(".level-value"),
+    expensesValue = document.querySelector(".expenses-value"),
+    optionalExpensesValue = document.querySelector(".optionalexpenses-value"),
+    incomeValue = document.querySelector(".income-value"),
+    monthSavingsValue = document.querySelector(".monthsavings-value"),
+    yearSavingsValue = document.querySelector(".yearsavings-value"),
+    expensesItem = document.querySelectorAll(".expenses-item"),
+    expensesBtn = document.querySelectorAll("button")[0],
+    optionalExpensesBtn = document.querySelectorAll("button")[1],
+    countBtn = document.querySelectorAll("button")[2],
+    optionalExpensesItem = document.querySelectorAll(".optionalexpenses-item"),
+    expensesItem1Name = document.querySelectorAll(".expenses-item")[0],
+    expensesItem1Price = document.querySelectorAll(".expenses-item")[1],
+    expensesItem2Name = document.querySelectorAll(".expenses-item")[2],
+    expensesItem2Price = document.querySelectorAll(".expenses-item")[3],
+    incomeItem = document.querySelector(".choose-income"),
+    checkSavings = document.querySelector("#savings"),
+    sumValue = document.querySelector(".choose-sum"),
+    percentValue = document.querySelector(".choose-percent"),
+    yearValue = document.querySelector(".year-value"),
+    monthValue = document.querySelector(".month-value"),
+    dayValue = document.querySelector(".day-value"),
+    startCalculate = document.querySelectorAll("button")[3],
+    optionalExpensesItem1 = document.querySelectorAll(".optionalexpenses-item")[0],
+    optionalExpensesItem2 = document.querySelectorAll(".optionalexpenses-item")[1],
+    optionalExpensesItem3 = document.querySelectorAll(".optionalexpenses-item")[2];
 
 let money, time;
 
@@ -54,32 +48,49 @@ startBtn.addEventListener("click", function() {
   dayValue.value = new Date(Date.parse(time)).getDate();
 });
 
-function checkInputsExpenses() {
-  for (var i = 0; i < expensesItem.length; i++) {
-    console.log(expensesItem[i].value);
-    if (expensesItem[i].value == "") {
-      return 1;
+function checkInputsData(incomingMass) {
+    for (var i = 0; i < incomingMass.length; i++) {
+        console.log(incomingMass[i].value);
+        if (incomingMass[i].value == "") {
+            return true;
+        }
     }
-  }
-  return 2;
+    return false;
 }
 
-function checkInputsExpensesOptional() {
-  for (var i = 0; i < optionalExpensesItem.length; i++) {
-    console.log(optionalExpensesItem[i].value);
-    if (optionalExpensesItem[i].value == "") {
-      return 1;
+expensesItem[1].addEventListener("keyup", function() {
+    var numRus = new RegExp("[0-9]");
+    var cutString = expensesItem[1].value;
+    var cutStringLen = expensesItem[1].value.length;
+    
+    if (numRus.test(cutString.substr(-1))) {
+        // console.log("match");
+    } else {
+        cutString = cutString.substring(0, cutStringLen - 1);
+        expensesItem[1].value = cutString;
+    }    
+});
+
+expensesItem[3].addEventListener("keyup", function () {
+    var numRus = new RegExp("[0-9]");
+    var cutString = expensesItem[3].value;
+    var cutStringLen = expensesItem[3].value.length;
+    
+    if (numRus.test(cutString.substr(-1))) {
+        // console.log("match");
+    } else {
+        cutString = cutString.substring(0, cutStringLen - 1);
+        expensesItem[3].value = cutString;
     }
-  }
-  return 2;
-}
+});
+
 
 expensesBtn.addEventListener("click", function(event) {
   if (appData.budget == undefined || appData.budget == "") {
     event.preventDefault();
-  } else if (checkInputsExpenses() == 1) {
+  } else if (checkInputsData(expensesItem)) {
     event.preventDefault();
-  } else if (checkInputsExpenses() == 2) {
+  } else {
     let sum = 0;
 
     for (let i = 0; i < expensesItem.length; i++) {
@@ -110,17 +121,61 @@ expensesBtn.addEventListener("click", function(event) {
   }
 });
 
+optionalExpensesItem1.addEventListener("keyup", function() {
+    var symRus = new RegExp("[а-яА-ЯёЁ]");
+    var cutString = optionalExpensesItem1.value;
+    var cutStringLen = optionalExpensesItem1.value.length;
+
+    if (symRus.test(cutString.substr(-1))) {
+        // console.log("match");
+    } else {
+        cutString = cutString.substring(0, cutStringLen - 1);
+        optionalExpensesItem1.value = cutString;
+    }
+});
+
+optionalExpensesItem2.addEventListener("keyup", function () {
+    var symRus = new RegExp("[а-яА-ЯёЁ]");
+    var cutString = optionalExpensesItem2.value;
+    var cutStringLen = optionalExpensesItem2.value.length;
+
+    if (symRus.test(cutString.substr(-1))) {
+        // console.log("match");
+    } else {
+        cutString = cutString.substring(0, cutStringLen - 1);
+        optionalExpensesItem2.value = cutString;
+    }
+});
+
+optionalExpensesItem3.addEventListener("keyup", function () {
+    var symRus = new RegExp("[а-яА-ЯёЁ]");
+    
+    if (symRus.test((optionalExpensesItem3.value).substr(-1))) {
+        // console.log("match");
+    } else {
+        var cutString = optionalExpensesItem3.value;
+        var cutStringLen = optionalExpensesItem3.value.length;
+        cutString = cutString.substring(0, cutStringLen - 1);
+        optionalExpensesItem3.value = cutString;
+    }
+});
+
+
+
 optionalExpensesBtn.addEventListener("click", function(event) {
-  if (checkInputsExpensesOptional() == 1) {
+  optionalExpensesValue.textContent = "";
+  if (checkInputsData(optionalExpensesItem)) {
     event.preventDefault();
-  } else if (checkInputsExpensesOptional() == 2) {
+  } else {
     for (let i = 0; i < optionalExpensesItem.length; i++) {
       let opt = optionalExpensesItem[i].value;
       appData.optionalExpenses[i] = opt;
-      optionalexpensesValue.textContent += appData.optionalExpenses[i] + " ";
+      optionalExpensesValue.textContent += appData.optionalExpenses[i] + " ";
     }
   }
 });
+
+
 
 countBtn.addEventListener("click", function(event) {
   if (appData.budget == undefined || appData.budget == "" || (expensesValue.textContent == "")) {
