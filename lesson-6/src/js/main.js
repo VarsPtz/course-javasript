@@ -84,7 +84,6 @@ expensesItem[3].addEventListener("keyup", function () {
     }
 });
 
-
 expensesBtn.addEventListener("click", function(event) {
   if (appData.budget == undefined || appData.budget == "") {
     event.preventDefault();
@@ -149,18 +148,16 @@ optionalExpensesItem2.addEventListener("keyup", function () {
 
 optionalExpensesItem3.addEventListener("keyup", function () {
     var symRus = new RegExp("[а-яА-ЯёЁ]");
+    var cutString = optionalExpensesItem3.value;
+    var cutStringLen = optionalExpensesItem3.value.length;
     
     if (symRus.test((optionalExpensesItem3.value).substr(-1))) {
         // console.log("match");
     } else {
-        var cutString = optionalExpensesItem3.value;
-        var cutStringLen = optionalExpensesItem3.value.length;
         cutString = cutString.substring(0, cutStringLen - 1);
         optionalExpensesItem3.value = cutString;
     }
 });
-
-
 
 optionalExpensesBtn.addEventListener("click", function(event) {
   optionalExpensesValue.textContent = "";
@@ -174,8 +171,6 @@ optionalExpensesBtn.addEventListener("click", function(event) {
     }
   }
 });
-
-
 
 countBtn.addEventListener("click", function(event) {
   if (appData.budget == undefined || appData.budget == "" || (expensesValue.textContent == "")) {
