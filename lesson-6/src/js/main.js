@@ -58,6 +58,32 @@ function checkInputsData(incomingMass) {
     return false;
 }
 
+
+// document.addEventListener("keyup", function(event) {
+//   console.log(this.tagName);
+  
+// });
+
+
+// document.addEventListener('click', function() {
+//     for (var z = 1; z <= expensesItem.length; (z = z + 2)) {
+//     expensesItem[z].addEventListener("keyup", function () {
+//       var numRus = new RegExp("[0-9]");
+//       var cutString = expensesItem[z].value;
+//       var cutStringLen = expensesItem[z].value.length;
+
+//       if (numRus.test(cutString.substr(-1))) {
+//         // console.log("match");
+//       } else {
+//         cutString = cutString.substring(0, cutStringLen - 1);
+//         expensesItem[z].value = cutString;
+//       }
+//     })
+//   }
+// });
+
+
+
 expensesItem[1].addEventListener("keyup", function() {
     var numRus = new RegExp("[0-9]");
     var cutString = expensesItem[1].value;
