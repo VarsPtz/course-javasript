@@ -26,21 +26,21 @@
 }());
 
 
-window.addEventListener("DOMContentLoaded", function () {
-    var fps = 15;
+// window.addEventListener("DOMContentLoaded", function () {
+//     var fps = 15;
 
-    function step() {
-        setTimeout(function () {
-            requestAnimationFrame(step);
-            function move(t, l) {
-                el.style.top = t + "px";
-                el.style.left = l + "px";
+//     function moveIt() {
+//         setInterval(function () {
+//             requestAnimationFrame(step);
+//             function move(t, l) {
+//                 el.style.top = t + "px";
+//                 el.style.left = l + "px";
                 
-            }// Drawing code goes here
-        }, 1000 / fps);
-    }
+//             }// Drawing code goes here
+//         }, 1000 / fps);
+//     }
            
-});
+// });
 
 let box = document.querySelector(".box"),
     but = document.querySelector(".move"),
@@ -51,33 +51,72 @@ let box = document.querySelector(".box"),
     heightBox = Number((getComputedStyle(box).height).replace(/px/, "")),
     heightBoxSquare = Number((getComputedStyle(boxSquare).height).replace(/px/, "")),
     longWayY = heightBox - heightBoxSquare,
-    posX = 0;
-    posY = 0;
+    posX = 0,
+    posY = 0,
+    fps = 15;
 
 function moveIt() {
-    
-    
-    let id = setInterval(frame, 10);
-    function frame() {
-        if (posX < 150 && posX >= 0 && posY == 0) {
-            posX++;
-            boxSquare.style.left = posX + "px";
-        } else if (posX == 150 && posY >= 0 && posY < 150) {
-            posY++;
-            boxSquare.style.top = posY + "px";
-        } else if (posX > 0 && posX <= 150 && posY == 150) {
-            posX--;
-            boxSquare.style.left = posX + "px";
-        } else if (posX == 0 && posY <= 150 && posY > 0) {
-            posY--;
-            boxSquare.style.top = posY + "px";
+        if (box.classList.contains("running-box")) {
+            box.classList.remove("running-box");
+        } else {
+            box.classList.add("running-box");
         }
-    }
-}
 
-// let id = setInterval(frame, 10);
+        // let id = setInterval(frame, 10);
+       
+
+        requestAnimationFrame(function frame() {
+            if (box.classList.contains("running-box") == true) {
+                requestAnimationFrame(frame);
+                if (posX < longWayX && posX >= 0 && posY == 0) {
+                    posX++;
+                    boxSquare.style.left = posX + "px";
+                } else if (posX == longWayX && posY >= 0 && posY < longWayY) {
+                    posY++;
+                    boxSquare.style.top = posY + "px";
+                } else if (posX > 0 && posX <= longWayX && posY == longWayY) {
+                    posX--;
+                    boxSquare.style.left = posX + "px";
+                } else if (posX == 0 && posY <= longWayY && posY > 0) {
+                    posY--;
+                    boxSquare.style.top = posY + "px";
+                }
+            } else {
+                cancelAnimationFrame(frame);
+            }
+        });
+}    
+
+
+//Вариант без использования requestAnimationFrame
+
+// function moveIt() {
+//     if (box.classList.contains("running-box")) {
+//         box.classList.remove("running-box");
+//     } else {
+//         box.classList.add("running-box");
+//     }
+
+//     let id = setInterval(frame, 10);
+
+//     function frame() {
+//         if (box.classList.contains("running-box") !== true) {
+//             clearInterval(id);
+//         }
+//         if (posX < longWayX && posX >= 0 && posY == 0) {
+//             posX++;
+//             boxSquare.style.left = posX + "px";
+//         } else if (posX == longWayX && posY >= 0 && posY < longWayY) {
+//             posY++;
+//             boxSquare.style.top = posY + "px";
+//         } else if (posX > 0 && posX <= longWayX && posY == longWayY) {
+//             posX--;
+//             boxSquare.style.left = posX + "px";
+//         } else if (posX == 0 && posY <= longWayY && posY > 0) {
+//             posY--;
+//             boxSquare.style.top = posY + "px";
+//         }
+//     }
+// }
 
 but.addEventListener("click", moveIt);
-
-// setInterval(moveIt, 1000);
-// // moveIt();
