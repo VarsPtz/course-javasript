@@ -92,5 +92,60 @@ window.addEventListener("DOMContentLoaded", function () {
 
     setClock("timer", deadline);
 
-
+    // Скрипт плавной прокрутки
+    let menuArea = document.querySelector(".container"),
+        menuElements = document.getElementsByTagName("li");
+    
+    menuArea.addEventListener("click", function (event) {
+        event.preventDefault(); //Отменяем стандартное действие
+                
+        let targetAnchor = String((event.target.getAttribute("href")).substring(1)); //делегируем нажатый пункт меню
+        let getAnchor = document.getElementById(targetAnchor); // Получаем целевой блок для перехода
+        let stepToAnchor = getAnchor.getBoundingClientRect().top;
+        console.log(stepToAnchor);
+        let tempIntervalAnchor = stepToAnchor;
+        let i = 0;
+        
+        var timerId = setInterval(function frame() {
+            if (stepToAnchor > 0) {
+                if (i < stepToAnchor-90) {
+                    scrollBy(0, 10);
+                    i = i + 10;
+                } else {
+                    console.log("конец перехода");
+                    clearInterval(timerId);
+                }
+            } else if (stepToAnchor < 0) {
+                if (i < Math.abs(stepToAnchor)+80) {
+                    scrollBy(0, -10);
+                    i = i + 10;
+                } else {
+                    console.log("конец перехода");
+                    clearInterval(timerId);
+                }
+            }
+            
+        }, 5);
+        
+        // requestAnimationFrame(function frame() {
+        //     if (stepToAnchor > 0) {
+        //         if (i < stepToAnchor) {
+        //             scrollBy(0, 30);
+        //             i = i + 30;
+        //         } else {
+        //             console.log("конец перехода");
+        //             cancelAnimationFrame(frame);
+        //         }
+        //     } else if (stepToAnchor < 0) {
+        //         if (i < Math.abs(stepToAnchor)) {
+        //             scrollBy(0, -30);
+        //             i = i + 30;
+        //         } else {
+        //             console.log("конец перехода");
+        //             cancelAnimationFrame(frame);
+        //         }
+        //     }
+        //     requestAnimationFrame(frame);
+        // });
+    });
 });
