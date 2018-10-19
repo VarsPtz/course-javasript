@@ -93,39 +93,70 @@ window.addEventListener("DOMContentLoaded", function () {
     setClock("timer", deadline);
 
     // Скрипт плавной прокрутки
-    let menuArea = document.querySelector(".container"),
-        menuElements = document.getElementsByTagName("li");
+
+    function animate(draw, duration) {
+        let start = performance.now();
+        requestAnimationFrame(
+            function animate(time) {
+                let timePassed = time - start;
+                if (timePassed > duration) {
+                    timePassed = duration;
+                }
+
+                draw(timePassed);
+
+                if (timePassed < duration) {
+                    requestAnimationFrame(animate);
+                }
+            });
+    }
+
+    let menu = document.getElementsByTagName("nav")[0];
+
+    menu.addEventListener("click", function (event) {
+        event.preventDefault();
+        animate(function (timePassed) {
+            let target = event.target;
+            let section = document.getElementById(target.getAttribute("href").slice(1));
+            window.scrollBy(0, section.getBoundingClientRect().top / 20 - 3);
+        }, 1500);
+    });
+
+
+
+    // let menuArea = document.querySelector(".container"),
+    //     menuElements = document.getElementsByTagName("li");
     
-    menuArea.addEventListener("click", function (event) {
-        event.preventDefault(); //Отменяем стандартное действие
+    // menuArea.addEventListener("click", function (event) {
+    //     event.preventDefault(); //Отменяем стандартное действие
                 
-        let targetAnchor = String((event.target.getAttribute("href")).substring(1)); //делегируем нажатый пункт меню
-        let getAnchor = document.getElementById(targetAnchor); // Получаем целевой блок для перехода
-        let stepToAnchor = getAnchor.getBoundingClientRect().top;
-        console.log(stepToAnchor);
-        let tempIntervalAnchor = stepToAnchor;
-        let i = 0;
+    //     let targetAnchor = String((event.target.getAttribute("href")).substring(1)); //делегируем нажатый пункт меню
+    //     let getAnchor = document.getElementById(targetAnchor); // Получаем целевой блок для перехода
+    //     let stepToAnchor = getAnchor.getBoundingClientRect().top;
+    //     console.log(stepToAnchor);
+    //     let tempIntervalAnchor = stepToAnchor;
+    //     let i = 0;
         
-        var timerId = setInterval(function frame() {
-            if (stepToAnchor > 0) {
-                if (i < stepToAnchor-90) {
-                    scrollBy(0, 10);
-                    i = i + 10;
-                } else {
-                    console.log("конец перехода");
-                    clearInterval(timerId);
-                }
-            } else if (stepToAnchor < 0) {
-                if (i < Math.abs(stepToAnchor)+90) {
-                    scrollBy(0, -10);
-                    i = i + 10;
-                } else {
-                    console.log("конец перехода");
-                    clearInterval(timerId);
-                }
-            }
+    //     var timerId = setInterval(function frame() {
+    //         if (stepToAnchor > 0) {
+    //             if (i < stepToAnchor-90) {
+    //                 scrollBy(0, 10);
+    //                 i = i + 10;
+    //             } else {
+    //                 console.log("конец перехода");
+    //                 clearInterval(timerId);
+    //             }
+    //         } else if (stepToAnchor < 0) {
+    //             if (i < Math.abs(stepToAnchor)+90) {
+    //                 scrollBy(0, -10);
+    //                 i = i + 10;
+    //             } else {
+    //                 console.log("конец перехода");
+    //                 clearInterval(timerId);
+    //             }
+    //         }
             
-        }, 5);
+    //     }, 5);
         
         // requestAnimationFrame(function frame() {
         //     if (stepToAnchor > 0) {
@@ -146,8 +177,9 @@ window.addEventListener("DOMContentLoaded", function () {
         //         }
         //     }
         //     requestAnimationFrame(frame);
+
         // });
-    });
+    // });
 
     // Modal
     let more = document.querySelector(".more"),

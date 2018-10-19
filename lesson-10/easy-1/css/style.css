@@ -1,0 +1,22 @@
+body {
+ text-align: center;
+}
+.disparity {
+ height: 300px;
+}
+.result-date {
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 10px;
+}
+
+button {
+ height: 20px;
+ width: 200px;
+ margin-top: 10px;
+}
+
+input {
+ text-align: center;
+}
