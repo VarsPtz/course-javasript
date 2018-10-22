@@ -670,3 +670,11 @@ header ul li:before {
 .overlay .popup-form__btn:hover {
   box-shadow: 0 0 10px #c78030;
 }
+.status {
+  text-align: center;
+  vertical-align: middle;
+  height: 40px;
+  margin-top: 20px;
+  padding-top: 9px;
+  background: url(../img/bg.jpg) center no-repeat;
+}

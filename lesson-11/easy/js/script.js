@@ -153,15 +153,15 @@ window.addEventListener("DOMContentLoaded", function () {
     // Form
 
     let message = {
-        loading: "Загрузка...",
-        success: "Спасибо! Скоро мы с вами свяжемся!",
-        failure: "Что-то пошло не так..."
+        loading: "url(../img/ajax-loader.gif)", // Загрузка...
+        success: "url(../img/checked.svg)", // Спасибо! Скоро мы с вами свяжемся!
+        failure: "url(../img/failure.svg)" // Что-то пошло не так...
     };
 
     let form = document.querySelector(".main-form"),
         input = form.getElementsByTagName("input"),
         statusMessage = document.createElement("div"),
-        contactForm = document.querySelector(".contact-form"),
+        contactForm = document.querySelector(".form-contact"),
         inputContactForm = contactForm.getElementsByTagName("input");
 
         
@@ -191,11 +191,11 @@ window.addEventListener("DOMContentLoaded", function () {
 
         request.addEventListener("readystatechange", function() {
             if (request.readyState < 4) {
-                statusMessage.innerHTML = message.loading;
+                statusMessage.style.backgroundImage = message.loading;
             } else if (request.readyState === 4 && request.status == 200) {
-                statusMessage.innerHTML = message.success;
+                statusMessage.style.backgroundImage = message.success;
             } else {
-                statusMessage.innerHTML = message.failure;
+                statusMessage.style.backgroundImage = message.failure;
             }
         });
 
@@ -209,31 +209,32 @@ window.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         contactForm.appendChild(statusMessage);
 
-        let request = new XMLHttpRequest();
-        request.open("POST", "server.php");
+        let requestContact = new XMLHttpRequest();
+        requestContact.open("POST", "server.php");
         // request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        request.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+        requestContact.setRequestHeader("Content-Type", "application/json; charset=utf-8");
 
-        let formData = new FormData(contactForm); //Объект FormData предназначен для кодирования данных, которые необходимо отправить на сервер посредством технологии AJAX (XMLHttpRequest).
+        let formDataContact = new FormData(contactForm); //Объект FormData предназначен для кодирования данных, которые необходимо отправить на сервер посредством технологии AJAX (XMLHttpRequest).
 
-        let obj = {}; // Промежуточный объект
-        formData.forEach(function (value, key) {
-            obj[key] = value;
+        
+        let objContact = {}; // Промежуточный объект
+        formDataContact.forEach(function (value, key) {
+            objContact[key] = value;
         });
 
-        let json = JSON.stringify(obj);
+        let jsonContact = JSON.stringify(objContact);
 
         // request.send(formData);
-        request.send(json);
+        requestContact.send(jsonContact);
 
 
-        request.addEventListener("readystatechange", function () {
-            if (request.readyState < 4) {
-                statusMessage.innerHTML = message.loading;
-            } else if (request.readyState === 4 && request.status == 200) {
-                statusMessage.innerHTML = message.success;
+        requestContact.addEventListener("readystatechange", function () {
+            if (requestContact.readyState < 4) {
+                statusMessage.style.backgroundImage = message.loading;
+            } else if (requestContact.readyState === 4 && requestContact.status == 200) {
+                statusMessage.style.backgroundImage = message.success;
             } else {
-                statusMessage.innerHTML = message.failure;
+                statusMessage.style.backgroundImage = message.failure;
             }
         });
 
@@ -250,15 +251,14 @@ window.addEventListener("DOMContentLoaded", function () {
 
         if (cutStringForm.length > 1) {
             if (digitInputPlus.test(cutStringForm) && digitInput.test(cutStringForm.slice(1, cutStringForm.length))) {
-                console.log(cutStringForm.slice(1, cutStringForm.length));
-                console.log(digitInput.test(cutStringForm.slice(1, cutStringForm.length)));
+                
             } else {
                 cutStringForm = cutStringForm.substring(0, cutStringLenForm - 1);
                 input[0].value = cutStringForm;
             }
         } else if (cutStringForm.length <= 1) {
             if (digitInputPlus.test(cutStringForm)) {
-                // console.log("ok");
+                
             } else {
                 input[0].value = "";
             }
@@ -274,15 +274,14 @@ window.addEventListener("DOMContentLoaded", function () {
 
         if (cutString.length > 1) {
             if (digitInputPlus.test(cutString) && digitInput.test(cutString.slice(1, cutString.length))) {
-                console.log(cutString.slice(1, cutString.length));
-                console.log(digitInput.test(cutString.slice(1, cutString.length)));
+                
             } else {
                 cutString = cutString.substring(0, cutStringLen - 1);
                 inputContactForm[1].value = cutString;
             }
         } else if (cutString.length <= 1) {
             if (digitInputPlus.test(cutString)) {
-                // console.log("ok");
+                
             } else {
                 inputContactForm[1].value = "";
             }
