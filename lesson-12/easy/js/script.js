@@ -245,13 +245,13 @@ window.addEventListener("DOMContentLoaded", function () {
                 }
 
                 postData(formData)
-                    .then(()=> statusMessage.innerHTML = message.loading)
+                    .then(() => statusMessage.style.backgroundImage = message.loading)
                     .then(()=> {
                         thanksModal.style.display = "block";
                         mainModal.style.display = "none";
-                        statusMessage.innerHTML = "";
+                        statusMessage.style.backgroundImage = message.success;
                     })
-                    .catch(()=> statusMessage.innerHTML = message.failure)
+                    .catch(() => statusMessage.style.backgroundImage = message.failure)
                     .then(clearInput)
         });
         sendForm(form);
