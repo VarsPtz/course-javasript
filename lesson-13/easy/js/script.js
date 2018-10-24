@@ -335,7 +335,8 @@ window.addEventListener("DOMContentLoaded", function () {
 
         persons.addEventListener("change", function() {
             personSum = +this.value;
-            total = (daysSum + personSum) * 4000;
+            let placeCoefficient = place.options[place.selectedIndex].value;
+            total = ((daysSum + personSum) * 4000) * placeCoefficient;
             
             if (persons.value == "" || persons.value == 0 || restDays.value == "" || restDays.value == 0) {
                 totalValue.innerHTML = 0;
@@ -346,7 +347,8 @@ window.addEventListener("DOMContentLoaded", function () {
 
         restDays.addEventListener("change", function () {
             daysSum = +this.value;
-            total = (daysSum + personSum) * 4000;
+            let placeCoefficient = place.options[place.selectedIndex].value;
+            total = (daysSum + personSum) * 4000 * placeCoefficient;
 
             if (persons.value == "" || restDays.value == "" || restDays.value == 0 || persons.value == 0) {
                 totalValue.innerHTML = 0;
@@ -385,8 +387,8 @@ window.addEventListener("DOMContentLoaded", function () {
         if (persons.value == "" || restDays.value == "" || restDays.value == 0 || persons.value == 0) {
             totalValue.innerHTML = 0;
         } else {
-            let a = total; // Промежуточная переменная для хранения суммы
-            totalValue.innerHTML = a * this.options[this.selectedIndex].value;
+            let a = (daysSum + personSum) * 4000 * this.options[this.selectedIndex].value; // Промежуточная переменная для хранения суммы
+            totalValue.innerHTML = a;
         }
     });
 
