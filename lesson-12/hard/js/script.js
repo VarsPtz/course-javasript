@@ -22,7 +22,7 @@ let inputRub = document.getElementById('rub'),
 // });
 
 function currencyExchange() {
-    console.log("StartOfCurrencyExcange");
+    
     let inputRub = document.getElementById('rub'),
         inputUsd = document.getElementById('usd');
 
@@ -35,34 +35,25 @@ function currencyExchange() {
                 request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
                 request.send();
                 
-                console.log("BeforAddEventReadyState");
-
                 request.addEventListener('readystatechange', function () {
-                    
-                    // console.log(request.readyState, request.status);
-
-                    if (request.readyState === 4 && request.status == 200) {
-                        // console.log("If", request.readyState, request.status);
-                        resolve();
-                        let data = JSON.parse(request.response);
-                        inputUsd.value = inputRub.value / data.usd;
-                    } else if (request.readyState === 4 && request.status !== 200) {
-                        // inputUsd.value = "Что-то пошло не так!";
-                        console.log("error");
-                        reject();
+                    if (request.readyState < 4) {
+                        
+                    } else if (request.readyState === 4 && request.status == 200) {
+                        resolve(JSON.parse(request.response));
                     } else {
-                        // console.log("loading");
-                        resolve();
+                        reject(request.statusText);
                     }
                 });
-                // let data = JSON.parse(request.response);
-                // inputUsd.value = inputRub.value / data.usd;
-                // console.log("End of GetCurrency");
+                
+                console.log("End of GetCurrency");
             });
-        }
-        getCurrency();
-        //    .then(() => inputUsd.value = inputRub.value / data.usd)
-        //    .catch(() => inputUsd.value = "Что-то пошло не так!");
+        } // End currencyExchange
+        getCurrency()
+         .then(v => {
+            inputUsd.value = inputRub.value / v.usd;
+         }), e => {
+            inputUsd.value = e;
+         }
     });
 }
 currencyExchange();
