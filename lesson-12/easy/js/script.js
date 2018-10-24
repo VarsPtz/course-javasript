@@ -256,7 +256,7 @@ window.addEventListener("DOMContentLoaded", function () {
         });
         // sendForm(form);
         // sendForm(contactForm);
-    }
+    } // End of sendForm
     sendForm(form);
     sendForm(contactForm);
 
