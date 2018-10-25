@@ -24,6 +24,7 @@ $(document).ready(function() {
         $(".modal").animate(
             {
                 top: "-500px",
+                opacity: "toggle"
             }, 2000
         );
         setTimeout(() => {
