@@ -1,4 +1,4 @@
-function form() {
+export default function form() {
     // Form
 
     let message = {
@@ -119,5 +119,6 @@ function form() {
 
 }
 
-module.exports = form;
+// module.exports = form;
+// export default form;
 

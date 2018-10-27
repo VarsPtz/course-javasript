@@ -1,4 +1,4 @@
-function timer () {
+export default function timer() {
     // Timer 
     let deadline = "2018-10-26";
 
@@ -53,5 +53,6 @@ function timer () {
     setClock("timer", deadline);
 }
 
-module.exports = timer;
+// module.exports = timer;
+// export default timer;
 

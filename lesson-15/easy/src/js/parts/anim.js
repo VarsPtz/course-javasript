@@ -1,4 +1,4 @@
-function anim() {
+export default function anim() {
     // Скрипт плавной прокрутки
 
     function animate(draw, duration) {
@@ -30,5 +30,6 @@ function anim() {
     });
 }
 
-module.exports = anim;
+// module.exports = anim;
+// export default anim;
 

@@ -1,19 +1,21 @@
-window.addEventListener("DOMContentLoaded", function () {
-    "use strist";
-            
-    let anim = require("../js/parts/anim.js"),
-        calc = require("../js/parts/calc.js"),
-        form = require("../js/parts/form.js"),
-        slider = require("../js/parts/slider.js"),
-        tabs = require("../js/parts/tabs.js"),
-        timer = require("../js/parts/timer.js"),
-        modal = require("../js/parts/modal.js");
-   
-    anim();
-    calc();
-    form();
-    slider();
-    tabs();
-    timer();
-    modal();
-});
+
+ import anim from "../js/parts/anim";
+ import calc from "../js/parts/calc";
+ import form from "../js/parts/form";
+ import slider from "../js/parts/slider";
+ import tabs from "../js/parts/tabs";
+ import timer from "../js/parts/timer";
+ import modal from "../js/parts/modal";
+
+ anim();
+ calc();
+ form();
+ slider();
+ tabs();
+ timer();
+ modal();
+
+//   "use strist";
+// window.addEventListener("DOMContentLoaded", function () {
+
+// });

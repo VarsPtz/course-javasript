@@ -1,4 +1,4 @@
-function modal() {
+export default function modal() {
     // Modal
     let more = document.querySelector(".more"),
         overlay = document.querySelector('.overlay'),
@@ -20,7 +20,7 @@ function modal() {
     let descriptionBtn = document.querySelector(".description-btn"),
         descriptionBtnCollection = document.getElementsByClassName("description-btn");
 
-    for (var i = 0; i < descriptionBtnCollection.length; i++) {
+    for (let i = 0; i < descriptionBtnCollection.length; i++) {
         descriptionBtnCollection[i].addEventListener("click", function () {
             overlay.style.display = "block";
             this.classList.add("more-splash");
@@ -29,5 +29,6 @@ function modal() {
     }
 }
 
-module.exports = modal;
+// module.exports = modal;
+// export default modal;
    

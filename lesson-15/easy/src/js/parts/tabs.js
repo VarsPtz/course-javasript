@@ -1,4 +1,4 @@
-function tabs() {
+export default function tabs() {
     let tab = document.querySelectorAll(".info-header-tab"), //все пункты меню
         info = document.querySelector(".info-header"), //область включающая все пункты меню
         tabContent = document.querySelectorAll(".info-tabcontent"); //содержимое табов
@@ -36,5 +36,6 @@ function tabs() {
     });
 }
 
-module.exports = tabs;
+// module.exports = tabs;
+// export default tabs;
 

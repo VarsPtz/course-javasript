@@ -20,12 +20,11 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        include: [],
         use: {
           loader: 'babel-loader?optional[]=runtime',
           options: {
             presets: [
-              ["@babel/env", {
+              ["@babel/preset-env", {
                 targets: {
                   edge: "17",
                   firefox: "60",
