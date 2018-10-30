@@ -1,6 +1,6 @@
 
 
-window.addEventListener("DOMContentLoaded", function () {
+// window.addEventListener("DOMContentLoaded", function () {
     
     "use strict";
     let tab = document.querySelectorAll(".info-header-tab"), //все пункты меню
@@ -88,6 +88,8 @@ window.addEventListener("DOMContentLoaded", function () {
             }            
         };
         let timeInterval = setInterval(updateClock, 1000);
+
+        return "";
     };
 
     setClock("timer", deadline);
@@ -408,4 +410,4 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
 
-});
+// });
