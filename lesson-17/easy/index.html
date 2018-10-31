@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&amp;subset=cyrillic" rel="stylesheet">
+ <link rel="stylesheet" href="css/style.css">
+ <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+ <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
+ <link rel="stylesheet" href="css/animate.css">
+ <title>Homework</title>
+</head>
+<body>
+   <div class="tabs">
+
+    <ul class="tabs__caption">
+     <li class="active animated fadeInRight">Слайдер</li>
+     <li class="animated fadeInRight delay-1s">Калькулятор</li>
+     <li class="animated fadeInRight delay-2s">Пагинатор</li>
+    </ul>
+
+    <div class="tabs__content active">
+     <!-- Содержимое первого блока -->
+     <!-- Set up your HTML -->
+     <h1 class="animated bounce">Звёздные войны</h1>
+     <div class="owl-carousel owl-theme">
+       <div class="item">1<img src="img/photo1.jpg"></div>
+       <div class="item">2<img src="img/photo2.jpg"></div>
+       <div class="item">3<img src="img/photo3.jpg"></div>
+       <div class="item">4<img src="img/photo4.jpg"></div>
+       <div class="item">5<img src="img/photo5.jpg"></div>
+       <div class="item">6<img src="img/photo6.jpg"></div>
+     </div>
+
+    </div>
+
+    <div class="tabs__content">
+        <h1 class="animated bounce">Калькулятор</h1>
+        <div class="container">
+            <div class="view">0</div>
+        </div>
+    </div>
+
+    <div class="tabs__content">
+        <h1 class="animated bounce">Пагинатор<h1>
+        <div class="pagination-wrapper">
+         <svg class="btn btn--prev" height="96" viewBox="0 0 24 24" width="96" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" />
+          <path d="M0-.5h24v24H0z" fill="none" />
+         </svg>
+
+         <div class="pagination-container">
+          <div class="little-dot  little-dot--first"></div>
+          <div class="little-dot">
+           <div class="big-dot-container">
+            <div class="big-dot"></div>
+           </div>
+          </div>
+          <div class="little-dot  little-dot--last"></div>
+         </div>
+
+         <svg class="btn btn--next" height="96" viewBox="0 0 24 24" width="96" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
+          <path d="M0-.25h24v24H0z" fill="none" />
+         </svg>
+        </div>
+    </div>
+
+   </div><!-- .tabs-->
+
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   <script src="js/jquery.min.js"></script>
+   <!-- Скрипт для табов -->
+   <script>
+    (function ($) {
+     $(function () {
+
+      $('ul.tabs__caption').on('click', 'li:not(.active)', function () {
+       $(this)
+        .addClass('active').siblings().removeClass('active')
+        .closest('div.tabs').find('div.tabs__content').removeClass('active').eq($(this).index()).addClass('active');
+      });
+
+     });
+    })(jQuery);
+   </script>
+   <script src="owlcarousel/owl.carousel.min.js"></script>
+   <script>
+       $(document).ready(function(){
+           $('.owl-carousel').owlCarousel({
+               animateOut: 'slideOutDown',
+               animateIn: "flipInX",
+               loop:true,
+               lazyload: true,
+               margin:30,
+               stagePadding:30,
+               smartSpeed:450,
+               nav:true,
+               responsive:{
+               0:{
+               items:1
+               },
+               600:{
+               items:3
+               },
+               1200:{
+               items:5
+               }
+               }
+           });
+           $(".owl-carousel").on('mousewheel', '.owl-stage', function (e) {
+               if (e.deltaY>0) {
+                   $(".owl-carousel").trigger('next.owl');
+               } else {
+                   $(".owl-carousel").trigger('prev.owl');
+               }
+               e.preventDefault();
+           });
+       });
+   </script>
+
+   <!-- Скрипт Калькулятор -->
+   <script src="js/calc.js"></script>
+   <!-- Скрипт Соц. сети -->
+   <script src="js/dots.js"></script>
+ 
+</body>
+</html>

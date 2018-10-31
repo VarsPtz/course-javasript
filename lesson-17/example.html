@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <!-- <style>
+            .galleria{ max-width: 700px; height: 400px; background: #000 }
+        </style> -->
+    </head>
+    <body>
+        <div class="galleria">
+            <img src="photo1.jpg">
+            <img src="photo2.jpg">
+            <img src="photo3.jpg">
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+        <script src="galleria/galleria-1.5.7.min.js"></script>
+        <script>
+            (function() { 
+                    Galleria.loadTheme('galleria/themes/classic/galleria.classic.min.js');
+                    Galleria.configure({
+                        transition: "slide",
+                        imageCrop: true,
+                        height: 700,
+                        width: 800,
+                        autoplay: 3000,
+                        lightbox: true
+                    });
+                    Galleria.run('.galleria');
+                }());
+        </script>
+    </body>
+</html>
