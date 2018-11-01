@@ -12,26 +12,21 @@ export default function ajax() {
     statusMessage.classList.add("ajax-response");
     
     function hideElements(form) {
-        // for (var i = 0; i < form.children.length; i++) {
-        //     if (form.children[i].tagName == 'H4') {
-        //         form.children[i].style.display = "none";
-        //     } else if (form.children[i].tagName == 'IMG') {
-        //         form.children[i].style.display = "inline-block";
-        //         form.children[i].style.width = "150px";
-        //         form.style.display = "flex";
-        //         form.style.justifyContent = "center";
-        //         form.style.alignItems = "center";
-        //         form.style.flexFlow = " column wrap";
-        //     } else {
-        //         form.children[i].style.display = "none";
-        //     }
-        // }
+        for (var i = 0; i < form.children.length; i++) {
+            if (form.children[i].tagName == "H4") {
+                form.children[i].style.display = "none";
+            } else if (form.children[i].tagName == "IMG" || form.children[i].tagName == "p") {
+                form.children[i].remove();
+            } else {
+                form.children[i].style.display = "none";
+            }
+        }
     }
 
     function loading(incomingObject) {
-        hideElements(incomingObject);
+        // hideElements(incomingObject);
         statusMessage.appendChild(statusMessageLoading);
-        incomingObject.appendChild(statusMessage);
+        statusBlock.appendChild(statusMessage);
         statusImg.src = "/src/img/ajax/loading.svg";
     }
 
@@ -45,13 +40,16 @@ export default function ajax() {
     function failure(incomingObject) {
         hideElements(incomingObject);
         statusMessage.appendChild(statusMessageFailure);
-        incomingObject.appendChild(statusMessage);
+        statusBlock.appendChild(statusMessage);
         statusImg.src = "/src/img/ajax/failure.svg";
+        statusBlock.appendChild(statusImg);
+        statusImg.style.width = "150px";
+        statusBlock.style.display = "block";       
     }
 
     function ajaxSend(e) {
         var input = e.getElementsByTagName("input");
-        e.appendChild(statusImg);
+        // e.appendChild(statusImg);
 
         var request = new XMLHttpRequest();
         request.open("POST", 'server.php');
@@ -76,6 +74,8 @@ export default function ajax() {
         for (var i = 0; i < input.length; i++) {            
             input[i].value = "";
         }
+
+        e.querySelector("textarea").value = "";
     }
 
     body.addEventListener("submit", function (e) {
