@@ -596,7 +596,7 @@
 				<form action=mailer/smart.php method=POST>
 					<div class=input-wrapper>
 						<input type=text name=name placeholder="Ваше имя" required>
-						<input type="tel" name=phone placeholder="Ваш телефон" required>
+						<input type="tel" name=phone maxlength="11" placeholder="Ваш телефон" required>
 						<input type="email" name=email placeholder="Ваш E-mail">
 						<input class=input-text name=message type=text placeholder="Задайте ваш вопрос здесь" required>
 					</div>
@@ -660,14 +660,16 @@
 		<div class=popup-dialog>
 			<div class=popup-content>
 				<button class=popup-close>&times;</button>
-				<h4>Остались вопросы? Закажите обратный звонок</h4>
+				<!-- <h4>Остались вопросы? Закажите обратный звонок</h4> -->
 				<div class=main-form>
-					<form class=form action=mailer/smart.php method=POST>
+					<form class="form form-consultation" action=mailer/smart.php method=POST>
+						<h4>Остались вопросы? Закажите обратный звонок</h4>
 						<input type=text name=name placeholder="Ваше имя" required>
-						<input type="tel" name=phone placeholder="Ваш телефон" required>
+						<input type="tel" name=phone maxlength="11" placeholder="Ваш телефон" required>
 						<button class="button button-order" onclick="yaCounter46630539.reachGoal('btn-consultation'); return true;">Получить консультацию</button>
 					</form>
 				</div>
+				<div class="ajax-block"></div>
 			</div>
 		</div>
 	</div>
@@ -685,7 +687,7 @@
 		<div class=popup-dialog>
 			<div class=popup-content>
 				<button class=popup-close>&times;</button>
-				<form action= method=POST enctype=multipart/form-data>
+				<form class="form form-design" action= method=POST enctype=multipart/form-data>
 					<h4>Заказать дизайн портрета</h4>
 					<div class=file_uploa>
 						<button type=button>Загрузить фотографию</button>
@@ -695,21 +697,22 @@
 					<div class=main-form>
 						<div class=form>
 							<input type=text name=name placeholder="Ваше имя" required>
-							<input type="tel" name=phone placeholder="Ваш телефон" required>
+							<input type="tel" name=phone maxlength="11" placeholder="Ваш телефон" required>
 							<input type="email" name=email placeholder="Ваш e-mail">
 							<textarea name=message placeholder=Комментарий rows=2></textarea>
 							<button class="button button-order">Отправить дизайнеру</button>
 						</div>
 					</div>
-					<div class="ajax-block"></div>
-				</form>				
+					<!-- <div class="ajax-block"></div> -->
+				</form>
+				<div class="ajax-block"></div>
 			</div>
 		</div>
 	</div>
 
-	<link rel=stylesheet href=css/bootstrap.css>
-	<link rel=stylesheet href=css/main.css>
+	<link rel=stylesheet href="css/bootstrap.css">
+	<link rel=stylesheet href="css/main.css">
 	<link rel="stylesheet" href="css/animate.css">
-	<script src="../dist/js/bundle.js"></script>	
+	<script src="js/bundle.js"></script>	
 </body>
 </html>
