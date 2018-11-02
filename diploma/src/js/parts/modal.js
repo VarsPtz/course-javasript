@@ -21,6 +21,7 @@ export default function modal() {
                formTag[i].style.display = "block";
            }
            popDesign.style.display = "block";
+           document.body.style.overflow = "hidden";
        });    
    }
 
@@ -29,6 +30,7 @@ export default function modal() {
            popDesign.style.display = "none";
            popConsultation.style.display = "none";
            popGift.style.display = "none";
+           document.body.style.overflow = "";
        });
    }
 
@@ -57,12 +59,14 @@ export default function modal() {
                formTag[i].style.display = "block";
            }
            popConsultation.style.display = "block";
+           document.body.style.overflow = "hidden";
        });
    }   
 
    btnGift.addEventListener("click", () => {
        popGift.style.display = "block";
        btnGift.style.display = "none";
+       document.body.style.overflow = "hidden";
    });
 
    popGift.addEventListener("click", (event) => {

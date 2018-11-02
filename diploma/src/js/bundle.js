@@ -279,6 +279,7 @@ function modal() {
                formTag[i].style.display = "block";
            }
            popDesign.style.display = "block";
+           document.body.style.overflow = "hidden";
        });    
    }
 
@@ -287,6 +288,7 @@ function modal() {
            popDesign.style.display = "none";
            popConsultation.style.display = "none";
            popGift.style.display = "none";
+           document.body.style.overflow = "";
        });
    }
 
@@ -315,12 +317,14 @@ function modal() {
                formTag[i].style.display = "block";
            }
            popConsultation.style.display = "block";
+           document.body.style.overflow = "hidden";
        });
    }   
 
    btnGift.addEventListener("click", () => {
        popGift.style.display = "block";
        btnGift.style.display = "none";
+       document.body.style.overflow = "hidden";
    });
 
    popGift.addEventListener("click", (event) => {
