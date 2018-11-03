@@ -544,6 +544,61 @@ function pict() {
 
 /***/ }),
 
+/***/ "./src/js/parts/portfolioTabs.js":
+/*!***************************************!*\
+  !*** ./src/js/parts/portfolioTabs.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return portfolioTabs; });
+function portfolioTabs() {
+    let portfolioBlocks = document.querySelectorAll('.portfolio-block'),
+        portfolioMenu = document.querySelector('.portfolio-menu'),
+        portfolioMenuItems = document.querySelectorAll('.portfolio-menu li'),
+        portfolioNo = document.querySelector('.portfolio-no');
+
+    //Активный пункт меню - Все работы
+    // portfolioMenuItems[0].classList.add('active');
+
+    //Удалить у всех пунктов меню класс active.    
+    function getActiveTab(event) {
+        if (event.tagName == "LI") {
+            for (var i = 0; i < portfolioMenuItems.length; i++) {
+                portfolioMenuItems[i].classList.remove('active');
+            }
+            //  Добавить класс active у вабранного элемента.
+            event.classList.add('active');
+        }
+    }
+
+    // Отобразить выбранные блоки
+    function showBlocks(event) {
+        if (event.classList.contains('grandmother') || event.classList.contains('granddad')) {
+            portfolioNo.style.display = "block";
+        } else {
+            portfolioNo.style.display = "none";
+        }
+        for (var i = 0; i < portfolioBlocks.length; i++) {
+            if (portfolioBlocks[i].classList.contains(event.classList[0])) {
+                portfolioBlocks[i].style.display = "block";
+            } else {
+                portfolioBlocks[i].style.display = "none";
+            }
+        }
+    }
+
+    portfolioMenu.addEventListener('click', function (event) {
+        var target = event.target;
+        getActiveTab(target);
+        showBlocks(target);
+    });
+}
+
+/***/ }),
+
 /***/ "./src/js/parts/slider.js":
 /*!********************************!*\
   !*** ./src/js/parts/slider.js ***!
@@ -607,9 +662,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_parts_minutes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../js/parts/minutes */ "./src/js/parts/minutes.js");
 /* harmony import */ var _js_parts_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../js/parts/modal */ "./src/js/parts/modal.js");
 /* harmony import */ var _js_parts_pict__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../js/parts/pict */ "./src/js/parts/pict.js");
-/* harmony import */ var _js_parts_slider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../js/parts/slider */ "./src/js/parts/slider.js");
-/* harmony import */ var _js_parts_tab__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../js/parts/tab */ "./src/js/parts/tab.js");
-/* harmony import */ var _js_parts_timer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../js/parts/timer */ "./src/js/parts/timer.js");
+/* harmony import */ var _js_parts_portfolioTabs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../js/parts/portfolioTabs */ "./src/js/parts/portfolioTabs.js");
+/* harmony import */ var _js_parts_slider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../js/parts/slider */ "./src/js/parts/slider.js");
+/* harmony import */ var _js_parts_tab__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../js/parts/tab */ "./src/js/parts/tab.js");
+/* harmony import */ var _js_parts_timer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../js/parts/timer */ "./src/js/parts/timer.js");
+
 
 
 
@@ -626,9 +683,10 @@ Object(_js_parts_calc__WEBPACK_IMPORTED_MODULE_2__["default"])();
 Object(_js_parts_minutes__WEBPACK_IMPORTED_MODULE_3__["default"])();
 Object(_js_parts_modal__WEBPACK_IMPORTED_MODULE_4__["default"])();
 Object(_js_parts_pict__WEBPACK_IMPORTED_MODULE_5__["default"])();
-Object(_js_parts_slider__WEBPACK_IMPORTED_MODULE_6__["default"])();
-Object(_js_parts_tab__WEBPACK_IMPORTED_MODULE_7__["default"])();
-Object(_js_parts_timer__WEBPACK_IMPORTED_MODULE_8__["default"])();
+Object(_js_parts_portfolioTabs__WEBPACK_IMPORTED_MODULE_6__["default"])();
+Object(_js_parts_slider__WEBPACK_IMPORTED_MODULE_7__["default"])();
+Object(_js_parts_tab__WEBPACK_IMPORTED_MODULE_8__["default"])();
+Object(_js_parts_timer__WEBPACK_IMPORTED_MODULE_9__["default"])();
 
 // window.addEventListener("DOMContentLoaded", function () {
 //      "use strict";     
