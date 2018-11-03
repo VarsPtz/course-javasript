@@ -295,7 +295,8 @@ function modal() {
    popDesign.addEventListener("click", (event) => {
        if (event.target.classList.contains("popup-design")) {
             //Закрытие "догоняющего" модального окна "Остались вопросы?"
-           popDesign.style.display = "none";                 
+           popDesign.style.display = "none";
+           document.body.style.overflow = "";
        } else {
            
        }       
@@ -305,6 +306,7 @@ function modal() {
        if (event.target.classList.contains("popup-consultation")) {
            //Закрытие "догоняющего" модального окна "Остались вопросы?"
            popConsultation.style.display = "none";
+           document.body.style.overflow = "";
        } else {
 
        }
@@ -331,6 +333,7 @@ function modal() {
     //    console.log(event.target);
        if (event.target.classList.contains("popup-gift")) {
            popGift.style.display = "none";
+           document.body.style.overflow = "";
        } else {
 
        }
