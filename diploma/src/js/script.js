@@ -1,3 +1,4 @@
+import addBlocks from "../js/parts/addBlocks";
 import ajax from "../js/parts/ajax";
 import calc from "../js/parts/calc";
 import minutes from "../js/parts/minutes";
@@ -7,6 +8,7 @@ import slider from "../js/parts/slider";
 import tab from "../js/parts/tab";
 import timer from "../js/parts/timer";
 
+addBlocks();
 ajax();
 calc();
 minutes();
