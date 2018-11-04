@@ -1265,8 +1265,19 @@ h4 {
 }
 
 .ajax-block {
-  display: none;
+  display: none;  
 }
+
+.ajax-block-unhide {
+  animation: fadeIn 2s linear;
+}
+
+.ajax-block-hide {
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+
 
 @media (max-width: 1399px) {
   .paints {

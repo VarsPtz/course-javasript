@@ -19,29 +19,27 @@ export default function ajax() {
         statusBlock.innerHTML = "";
         statusMessage.innerHTML = "Загрузка...";
         if (incomingObject.classList.contains("form-consultation")) {
-            statusBlock[0].innerHTML = "";    
-            statusBlock[0].style.display = "block";
-            statusMessage.innerHTML = "Загрузка...";
-            statusBlock[0].appendChild(statusMessage);
-        } else if (incomingObject.classList.contains("form-design")) {
-            statusBlock[1].innerHTML = "";
+            statusBlock[1].innerHTML = "";    
             statusBlock[1].style.display = "block";
             statusMessage.innerHTML = "Загрузка...";
             statusBlock[1].appendChild(statusMessage);
+        } else if (incomingObject.classList.contains("form-design")) {
+            statusBlock[2].innerHTML = "";
+            statusBlock[2].style.display = "block";
+            statusMessage.innerHTML = "Загрузка...";
+            statusBlock[2].appendChild(statusMessage);
+        } else if (incomingObject.classList.contains("form-consultation2")) {
+            statusBlock[0].innerHTML = "";
+            statusMessage.innerHTML = "Загрузка...";
+            statusBlock[0].appendChild(statusMessage);
+            statusBlock[0].style.display = "block"; 
         }
     }
 
     function success(incomingObject) {
-        hideElements(incomingObject);
+        // hideElements(incomingObject);
         if (incomingObject.classList.contains("form-consultation")) {
-            statusBlock[0].innerHTML = "";
-            statusImg.src = "img/ajax/checked.svg";
-            statusBlock[0].appendChild(statusImg);
-            statusImg.style.width = "150px";
-            statusBlock[0].style.display = "block";
-            statusMessage.innerHTML = "Спасибо! Скоро мы с вами свяжемся.";
-            statusBlock[0].appendChild(statusMessage);
-        } else if (incomingObject.classList.contains("form-design")) {
+            hideElements(incomingObject);
             statusBlock[1].innerHTML = "";
             statusImg.src = "img/ajax/checked.svg";
             statusBlock[1].appendChild(statusImg);
@@ -49,20 +47,40 @@ export default function ajax() {
             statusBlock[1].style.display = "block";
             statusMessage.innerHTML = "Спасибо! Скоро мы с вами свяжемся.";
             statusBlock[1].appendChild(statusMessage);
-        }
+        } else if (incomingObject.classList.contains("form-design")) {
+            hideElements(incomingObject);
+            statusBlock[2].innerHTML = "";
+            statusImg.src = "img/ajax/checked.svg";
+            statusBlock[2].appendChild(statusImg);
+            statusImg.style.width = "150px";
+            statusBlock[2].style.display = "block";
+            statusMessage.innerHTML = "Спасибо! Скоро мы с вами свяжемся.";
+            statusBlock[2].appendChild(statusMessage);
+        } else if (incomingObject.classList.contains("form-consultation2")) {
+            statusBlock[0].classList.remove("ajax-block-hide");
+            statusBlock[0].classList.add("ajax-block-unhide");
+            statusBlock[0].innerHTML = "";
+            statusMessage.innerHTML = "Спасибо! Скоро мы с вами свяжемся.";
+            statusBlock[0].appendChild(statusMessage);
+            statusBlock[0].style.display = "block";
+            statusBlock[0].style.textAlign = "center";
+            statusBlock[0].firstElementChild.style.color = "blue";
+            statusBlock[0].firstElementChild.style.fontSize = "22px";
+            setTimeout(() => {
+                statusBlock[0].classList.remove("ajax-block-unhide");
+                statusBlock[0].classList.add("ajax-block-hide");
+                setTimeout(() => {
+                    statusBlock[0].style.display = "none";
+                }, 8000);
+                // statusBlock[0].style.display = "none";
+            }, 5000);
+        }    
     }
 
     function failure(incomingObject) {
-        hideElements(incomingObject);
+        // hideElements(incomingObject);
         if (incomingObject.classList.contains("form-consultation")) {
-            statusBlock[0].innerHTML = "";
-            statusImg.src = "img/ajax/failure.svg";
-            statusBlock[0].appendChild(statusImg);
-            statusImg.style.width = "150px";
-            statusBlock[0].style.display = "block";
-            statusMessage.innerHTML = "Извините, возникли технические трудности.";
-            statusBlock[0].appendChild(statusMessage);
-        } else if (incomingObject.classList.contains("form-design")) {
+            hideElements(incomingObject);
             statusBlock[1].innerHTML = "";
             statusImg.src = "img/ajax/failure.svg";
             statusBlock[1].appendChild(statusImg);
@@ -70,6 +88,26 @@ export default function ajax() {
             statusBlock[1].style.display = "block";
             statusMessage.innerHTML = "Извините, возникли технические трудности.";
             statusBlock[1].appendChild(statusMessage);
+        } else if (incomingObject.classList.contains("form-design")) {
+            hideElements(incomingObject);
+            statusBlock[2].innerHTML = "";
+            statusImg.src = "img/ajax/failure.svg";
+            statusBlock[2].appendChild(statusImg);
+            statusImg.style.width = "150px";
+            statusBlock[2].style.display = "block";
+            statusMessage.innerHTML = "Извините, возникли технические трудности.";
+            statusBlock[2].appendChild(statusMessage);
+        } else if (incomingObject.classList.contains("form-consultation2")) {
+            statusBlock[0].innerHTML = "";
+            statusMessage.innerHTML = "Извините, возникли технические трудности.";
+            statusBlock[0].appendChild(statusMessage);
+            statusBlock[0].style.display = "block";
+            statusBlock[0].style.textAlign = "center";
+            statusBlock[0].firstElementChild.style.color = "blue";
+            statusBlock[0].firstElementChild.style.fontSize = "22px";
+            setTimeout(() => {
+                statusBlock[0].style.display = "none";
+            }, 7000);
         }
     }
 
