@@ -86,6 +86,63 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/parts/accordion.js":
+/*!***********************************!*\
+  !*** ./src/js/parts/accordion.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return accordion; });
+function accordion() {
+    var accordion = document.querySelector('#accordion'),
+        accordionHeader = document.querySelectorAll('.accordion-heading'),
+        accordionBlock = document.querySelectorAll('.accordion-block');
+
+    //Вызываем функцию без параметра (undefined)
+    //Все заголовки не получат стили, все блоки будут скрыты.
+    getActive();
+    
+    //Создаём видимость "активного" первого заголовка
+    //Нельзя предопределить класс active у заголовка,
+    //т.к. мы ссылаемся на выбранный элемент в событии click
+    accordionBlock[0].style.display = "block";
+    accordionHeader[0].style.color = "#CC6BCB";
+
+    //Удаляем класс active у всех заголовках
+    function removeActive() {
+        for (var i = 0; i < accordionBlock.length; i++) {
+            accordionHeader[i].classList.remove('active');
+        }
+    }
+
+    //Стилизуем активный заголовок и блок. Скрываем остальные блоки.
+    function getActive(e) {
+        for (var i = 0; i < accordionHeader.length; i++) {
+            if (accordionHeader[i].classList.contains('active')) {
+                accordionHeader[i].style.color = "#CC6BCB";
+                e.parentElement.nextElementSibling.style.display = "block";
+            } else {
+                accordionHeader[i].style.color = "";
+                accordionBlock[i].style.display = "none"; 
+            }
+        }
+    }
+
+    accordion.addEventListener("click", function (event) {
+        var target = event.target;
+        removeActive();
+        if (target.parentElement.classList.contains("accordion-heading")) {
+            target.parentElement.classList.add("active");
+            getActive(target);
+        }
+    });
+}
+
+/***/ }),
+
 /***/ "./src/js/parts/addBlocks.js":
 /*!***********************************!*\
   !*** ./src/js/parts/addBlocks.js ***!
@@ -813,6 +870,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_parts_tab__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../js/parts/tab */ "./src/js/parts/tab.js");
 /* harmony import */ var _js_parts_timer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../js/parts/timer */ "./src/js/parts/timer.js");
 /* harmony import */ var _js_parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../js/parts/feedbackSlider */ "./src/js/parts/feedbackSlider.js");
+/* harmony import */ var _js_parts_accordion__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../js/parts/accordion */ "./src/js/parts/accordion.js");
+
 
 
 
@@ -836,6 +895,7 @@ Object(_js_parts_slider__WEBPACK_IMPORTED_MODULE_7__["default"])();
 Object(_js_parts_tab__WEBPACK_IMPORTED_MODULE_8__["default"])();
 Object(_js_parts_timer__WEBPACK_IMPORTED_MODULE_9__["default"])();
 Object(_js_parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_10__["default"])();
+Object(_js_parts_accordion__WEBPACK_IMPORTED_MODULE_12__["default"])();
 
 // window.addEventListener("DOMContentLoaded", function () {
 //      "use strict";     

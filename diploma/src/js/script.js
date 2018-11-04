@@ -9,6 +9,7 @@ import slider from "../js/parts/slider";
 import tab from "../js/parts/tab";
 import timer from "../js/parts/timer";
 import feedbackSlider from "../js/parts/feedbackSlider";
+import accordion from "../js/parts/accordion";
 
 addBlocks();
 ajax();
@@ -21,6 +22,7 @@ slider();
 tab();
 timer();
 feedbackSlider();
+accordion();
 
 // window.addEventListener("DOMContentLoaded", function () {
 //      "use strict";     
