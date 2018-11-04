@@ -8,6 +8,7 @@ import portfolioTabs from "../js/parts/portfolioTabs";
 import slider from "../js/parts/slider";
 import tab from "../js/parts/tab";
 import timer from "../js/parts/timer";
+import feedbackSlider from "../js/parts/feedbackSlider";
 
 addBlocks();
 ajax();
@@ -19,6 +20,7 @@ portfolioTabs();
 slider();
 tab();
 timer();
+feedbackSlider();
 
 // window.addEventListener("DOMContentLoaded", function () {
 //      "use strict";     

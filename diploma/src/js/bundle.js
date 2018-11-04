@@ -324,6 +324,80 @@ function calc() {
 
 /***/ }),
 
+/***/ "./src/js/parts/feedbackSlider.js":
+/*!****************************************!*\
+  !*** ./src/js/parts/feedbackSlider.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return feedbackSlider; });
+function feedbackSlider() {
+    var slideIndex = 1,
+        slides = document.querySelectorAll(".feedback-slider-item"),
+        prevSlide = document.querySelector(".main-prev-btn"),
+        nextSlide = document.querySelector(".main-next-btn");
+
+    //Скрываем все слайды и отображаем нужный.
+    showSlides(slideIndex);
+
+    function showSlides(n) {
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+        //Скрыть все слайды
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        //Отобразить слайд 
+        slides[slideIndex - 1].style.display = "block";
+    }
+
+    //Стиль анимации для слайдов влево <-
+    function slideLeft() {
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.animationName = "slideInLeft";
+        } 
+    }
+    
+    //Стиль анимации для слайдов вправо ->
+    function slideRight() {
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.animationName = "slideInRight";
+        }
+    }
+
+    // Слайд влево
+    prevSlide.addEventListener("click", function () {
+        slideIndex = slideIndex - 1;
+        showSlides(slideIndex); 
+        slideLeft();
+        clearInterval(timerSlider); //Cброс автоматического перелистывания слайдов.
+    });
+
+    //Слайд вправо
+    nextSlide.addEventListener("click", function () {
+        slideIndex = slideIndex + 1;
+        showSlides(slideIndex);
+        slideRight();
+        clearInterval(timerSlider); //Cброс автоматического перелистывания слайдов.
+    });
+
+    //Автоматическое перелистывание слайдов
+    var timerSlider = setInterval(function goRight() {
+        slideIndex = slideIndex + 1;
+        showSlides(slideIndex);
+        slideRight();        
+    }, 5000);
+}
+
+/***/ }),
+
 /***/ "./src/js/parts/minutes.js":
 /*!*********************************!*\
   !*** ./src/js/parts/minutes.js ***!
@@ -738,6 +812,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_parts_slider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../js/parts/slider */ "./src/js/parts/slider.js");
 /* harmony import */ var _js_parts_tab__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../js/parts/tab */ "./src/js/parts/tab.js");
 /* harmony import */ var _js_parts_timer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../js/parts/timer */ "./src/js/parts/timer.js");
+/* harmony import */ var _js_parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../js/parts/feedbackSlider */ "./src/js/parts/feedbackSlider.js");
+
 
 
 
@@ -759,6 +835,7 @@ Object(_js_parts_portfolioTabs__WEBPACK_IMPORTED_MODULE_6__["default"])();
 Object(_js_parts_slider__WEBPACK_IMPORTED_MODULE_7__["default"])();
 Object(_js_parts_tab__WEBPACK_IMPORTED_MODULE_8__["default"])();
 Object(_js_parts_timer__WEBPACK_IMPORTED_MODULE_9__["default"])();
+Object(_js_parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_10__["default"])();
 
 // window.addEventListener("DOMContentLoaded", function () {
 //      "use strict";     
