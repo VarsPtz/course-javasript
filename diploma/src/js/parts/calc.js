@@ -9,24 +9,12 @@ export default function calc() {
         materialCost = 0,
         optionsCost = 0,
         tempCost = 0;
-
-        
-    // Вычисление суммы
-    function sumPrice() {
-        var sum = Number(size.value) + Number(material.value) + Number(options.value);
-        // Проверка на ввод промокода
-        if (promocode.value.match(/IWANTPOPART/ig)) {
-            sum = sum - sum * 0.3;
-            return sum;
-        } else {
-            return sum;
-        } 
-    }
-
+    
     
     // Проверка на порядок ввода
     function checkInput(e) {
         
+        calcPrice.textContent = "Для расчета нужно выбрать размер картины и материал картины";        
         if (size.value != "Выберите размер картины") {
             if (size.value == "40x50") {
                 sizeCost = 500;
@@ -70,7 +58,7 @@ export default function calc() {
             calcPrice.textContent = tempCost;
         }
 
-        if (tempCost != 0 && promocode.value.match(/IWANTPOPART/ig)) {
+        if (sizeCost != 0 && materialCost != 0 && promocode.value.match(/IWANTPOPART/ig)) {
             tempCost = tempCost - tempCost * 0.3;
             calcPrice.textContent = tempCost;
         }
