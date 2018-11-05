@@ -333,6 +333,52 @@ function ajax() {
 
 /***/ }),
 
+/***/ "./src/js/parts/burgerMenu.js":
+/*!************************************!*\
+  !*** ./src/js/parts/burgerMenu.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return burgerMenu; });
+function burgerMenu() {
+    var body = document.querySelector("body"),
+        burgerMenu = document.querySelector(".burger-menu"),
+        burgerBtn = document.querySelector(".burger");
+
+    //Отслеживаем изменение ширины экрана.
+    window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+            burgerMenu.style.display = "none";
+        }
+    }, false);
+    
+    
+    //Проверяем "статус" (открыто-закрыто) бургер меню.
+    function burgerMenuStatus(target) {
+        if (window.innerWidth < 768 && burgerMenu.style.display == "none" && target.parentElement.classList.contains("burger") ||
+            window.innerWidth < 768 && burgerMenu.style.display == "none" && target.classList.contains("burger")) {
+            burgerMenu.style.display = "block";
+        } else if (window.innerWidth < 768 && burgerMenu.style.display == "block" && target.parentElement.classList.contains("burger") ||
+            window.innerWidth < 768 && burgerMenu.style.display == "block" && target.classList.contains("burger")) {
+            burgerMenu.style.display = "none";
+        } else {
+            burgerMenu.style.display = "none";
+        }
+    }
+
+    //Отслеживаем нажатие на бургер-меню и проверяем ширину экрана.
+    body.addEventListener("click", function (event) {
+        var target = event.target;
+        burgerMenuStatus(target);
+    });
+}
+
+
+/***/ }),
+
 /***/ "./src/js/parts/calc.js":
 /*!******************************!*\
   !*** ./src/js/parts/calc.js ***!
@@ -921,7 +967,7 @@ function timer() {
     });
 
     
-    
+    //Модальное окно через 60 секунд
     function setConsultTimer() {
         if (!scrolledStatus) {
             popConsultation.style.display = "block";
@@ -956,6 +1002,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_parts_timer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../js/parts/timer */ "./src/js/parts/timer.js");
 /* harmony import */ var _js_parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../js/parts/feedbackSlider */ "./src/js/parts/feedbackSlider.js");
 /* harmony import */ var _js_parts_accordion__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../js/parts/accordion */ "./src/js/parts/accordion.js");
+/* harmony import */ var _js_parts_burgerMenu__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../js/parts/burgerMenu */ "./src/js/parts/burgerMenu.js");
+
 
 
 
@@ -981,6 +1029,7 @@ Object(_js_parts_tab__WEBPACK_IMPORTED_MODULE_8__["default"])();
 Object(_js_parts_timer__WEBPACK_IMPORTED_MODULE_9__["default"])();
 Object(_js_parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_10__["default"])();
 Object(_js_parts_accordion__WEBPACK_IMPORTED_MODULE_11__["default"])();
+Object(_js_parts_burgerMenu__WEBPACK_IMPORTED_MODULE_12__["default"])();
 
 // window.addEventListener("DOMContentLoaded", function () {
 //      "use strict";     

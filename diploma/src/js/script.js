@@ -10,6 +10,7 @@ import tab from "../js/parts/tab";
 import timer from "../js/parts/timer";
 import feedbackSlider from "../js/parts/feedbackSlider";
 import accordion from "../js/parts/accordion";
+import burgerMenu from "../js/parts/burgerMenu";
 
 addBlocks();
 ajax();
@@ -23,6 +24,7 @@ tab();
 timer();
 feedbackSlider();
 accordion();
+burgerMenu();
 
 // window.addEventListener("DOMContentLoaded", function () {
 //      "use strict";     

@@ -37,7 +37,7 @@ export default function timer() {
     });
 
     
-    
+    //Модальное окно через 60 секунд
     function setConsultTimer() {
         if (!scrolledStatus) {
             popConsultation.style.display = "block";
