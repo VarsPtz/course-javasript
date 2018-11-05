@@ -884,6 +884,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return timer; });
 function timer() {
     var body = document.querySelector('body'),
+        popConsultation = document.querySelector(".popup-consultation"),
         btnGift = document.querySelector(".fixed-gift"),
         popGift = document.querySelector(".popup-gift"),
         scrollHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight),
@@ -903,8 +904,8 @@ function timer() {
             scrolledStatus = true;
         }
     }
-    
-    //Отслеживем нажатие кнопок
+
+        //Отслеживем нажатие кнопок
     //Если, нажата хотя бы одна кнопка, 
     //то модальное окно с подарком не появится
     body.addEventListener("click", function(event){
@@ -918,8 +919,19 @@ function timer() {
     window.addEventListener('scroll', function () {
         setTimeout(scrollBottom, 5000);
     });
+
+    
+    
+    function setConsultTimer() {
+        if (!scrolledStatus) {
+            popConsultation.style.display = "block";
+            document.body.style.overflow = "hidden";
+        }         
+    }
+
+    setTimeout(setConsultTimer, 60000);
+// https://learn.javascript.ru/metrics-window - размер страницы с учётом прокрутки
 }
-//https://learn.javascript.ru/metrics-window - размер страницы с учётом прокрутки
 
 /***/ }),
 
