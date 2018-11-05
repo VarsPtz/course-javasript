@@ -883,8 +883,43 @@ function tab() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return timer; });
 function timer() {
+    var body = document.querySelector('body'),
+        btnGift = document.querySelector(".fixed-gift"),
+        popGift = document.querySelector(".popup-gift"),
+        scrollHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight),
+        scrolledStatus = false;
+        
     
+    // Проверка условия, если находимся в конце страницы,
+    // и не нажата не одна кнопка, то всплывает модальное окно с подарком.
+    function scrollBottom() {
+        var scrolled = document.documentElement.scrollTop,
+            scrollFull = 400 + scrolled + document.documentElement.clientHeight;
+
+        if (scrollFull >= scrollHeight && !scrolledStatus) {
+            popGift.style.display = "block";
+            btnGift.style.display = "none";
+            document.body.style.overflow = "hidden";
+            scrolledStatus = true;
+        }
+    }
+    
+    //Отслеживем нажатие кнопок
+    //Если, нажата хотя бы одна кнопка, 
+    //то модальное окно с подарком не появится
+    body.addEventListener("click", function(event){
+        var target = event.target;
+        if (event.target.classList.contains("fixed-gift") || event.target.classList.contains("button")) {
+            scrolledStatus = true;
+        }
+    });
+    
+    // Отслеживаем событие scroll 
+    window.addEventListener('scroll', function () {
+        setTimeout(scrollBottom, 5000);
+    });
 }
+//https://learn.javascript.ru/metrics-window - размер страницы с учётом прокрутки
 
 /***/ }),
 
@@ -908,7 +943,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_parts_tab__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../js/parts/tab */ "./src/js/parts/tab.js");
 /* harmony import */ var _js_parts_timer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../js/parts/timer */ "./src/js/parts/timer.js");
 /* harmony import */ var _js_parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../js/parts/feedbackSlider */ "./src/js/parts/feedbackSlider.js");
-/* harmony import */ var _js_parts_accordion__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../js/parts/accordion */ "./src/js/parts/accordion.js");
+/* harmony import */ var _js_parts_accordion__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../js/parts/accordion */ "./src/js/parts/accordion.js");
 
 
 
@@ -933,7 +968,7 @@ Object(_js_parts_slider__WEBPACK_IMPORTED_MODULE_7__["default"])();
 Object(_js_parts_tab__WEBPACK_IMPORTED_MODULE_8__["default"])();
 Object(_js_parts_timer__WEBPACK_IMPORTED_MODULE_9__["default"])();
 Object(_js_parts_feedbackSlider__WEBPACK_IMPORTED_MODULE_10__["default"])();
-Object(_js_parts_accordion__WEBPACK_IMPORTED_MODULE_12__["default"])();
+Object(_js_parts_accordion__WEBPACK_IMPORTED_MODULE_11__["default"])();
 
 // window.addEventListener("DOMContentLoaded", function () {
 //      "use strict";     
