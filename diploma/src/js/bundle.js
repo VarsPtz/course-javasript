@@ -963,7 +963,7 @@ function timer() {
     
     // Отслеживаем событие scroll 
     window.addEventListener('scroll', function () {
-        setTimeout(scrollBottom, 5000);
+        setTimeout(scrollBottom, 2000);
     });
 
     
