@@ -534,7 +534,7 @@ function feedbackSlider() {
         slideIndex = slideIndex + 1;
         showSlides(slideIndex);
         slideRight();        
-    }, 5000);
+    }, 8000);
 }
 
 /***/ }),
