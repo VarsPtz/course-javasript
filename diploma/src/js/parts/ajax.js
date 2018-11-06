@@ -18,7 +18,7 @@ export default function ajax() {
     function loading(incomingObject) {
         statusBlock.innerHTML = "";
         statusMessage.innerHTML = "Загрузка...";
-        if (incomingObject.classList.contains("form-consultation")) {
+        if (incomingObject.classList.contains("form-consultation")) {2
             statusBlock[1].innerHTML = "";    
             statusBlock[1].style.display = "block";
             statusMessage.innerHTML = "Загрузка...";
@@ -47,6 +47,9 @@ export default function ajax() {
             statusBlock[1].style.display = "block";
             statusMessage.innerHTML = "Спасибо! Скоро мы с вами свяжемся.";
             statusBlock[1].appendChild(statusMessage);
+            setTimeout(() => {
+                statusBlock[1].lastElementChild.innerHTML = "";
+            }, 3000);
         } else if (incomingObject.classList.contains("form-design")) {
             hideElements(incomingObject);
             statusBlock[2].innerHTML = "";
@@ -56,6 +59,9 @@ export default function ajax() {
             statusBlock[2].style.display = "block";
             statusMessage.innerHTML = "Спасибо! Скоро мы с вами свяжемся.";
             statusBlock[2].appendChild(statusMessage);
+            setTimeout(() => {
+                statusBlock[2].lastElementChild.innerHTML = "";
+            }, 3000);
         } else if (incomingObject.classList.contains("form-consultation2")) {
             statusBlock[0].classList.remove("ajax-block-hide");
             statusBlock[0].classList.add("ajax-block-unhide");

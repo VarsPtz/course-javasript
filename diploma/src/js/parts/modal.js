@@ -11,7 +11,14 @@ export default function modal() {
        statusBlock = document.querySelectorAll(".ajax-block"),
        formTag = document.querySelectorAll("form");
 
-   for (let a = 0; a < btnDesign.length; a++) {
+    function clearStatusBlock() {
+        for (var i = 0; i < statusBlock.length; i++) {
+            statusBlock[i].innerHTML = "";
+            statusBlock[i].style.display = "none";
+        }
+    }
+   
+    for (let a = 0; a < btnDesign.length; a++) {
        btnDesign[a].addEventListener("click", () => {
            statusBlock[1].innerHTML = "";
            for (let y = 0; y < document.querySelector.length; y++) {
@@ -31,6 +38,8 @@ export default function modal() {
            popConsultation.style.display = "none";
            popGift.style.display = "none";
            document.body.style.overflow = "";
+           clearStatusBlock();
+           
        });
    }
 
@@ -39,6 +48,7 @@ export default function modal() {
             //Закрытие "догоняющего" модального окна "Остались вопросы?"
            popDesign.style.display = "none";
            document.body.style.overflow = "";
+           clearStatusBlock();
        } else {
            
        }       
@@ -49,6 +59,7 @@ export default function modal() {
            //Закрытие "догоняющего" модального окна "Остались вопросы?"
            popConsultation.style.display = "none";
            document.body.style.overflow = "";
+           clearStatusBlock();
        } else {
 
        }
@@ -76,6 +87,7 @@ export default function modal() {
        if (event.target.classList.contains("popup-gift")) {
            popGift.style.display = "none";
            document.body.style.overflow = "";
+           clearStatusBlock();
        } else {
 
        }

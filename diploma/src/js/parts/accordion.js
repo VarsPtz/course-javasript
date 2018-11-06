@@ -25,7 +25,12 @@ export default function accordion() {
         for (var i = 0; i < accordionHeader.length; i++) {
             if (accordionHeader[i].classList.contains('active')) {
                 accordionHeader[i].style.color = "#CC6BCB";
-                e.parentElement.nextElementSibling.style.display = "block";
+                if (e.parentElement.nextElementSibling.style.display == "block") {
+                    e.parentElement.nextElementSibling.style.display = "none";
+                    accordionHeader[i].style.color = "#333";
+                } else {
+                    e.parentElement.nextElementSibling.style.display = "block";
+                }
             } else {
                 accordionHeader[i].style.color = "";
                 accordionBlock[i].style.display = "none"; 

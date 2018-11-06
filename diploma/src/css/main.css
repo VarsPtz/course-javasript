@@ -839,6 +839,7 @@ h4 {
 }
 .feedback-slider-item {
   padding-bottom: 5rem;
+  animation: fadeInLeft 300ms linear;
 }
 .feedback-block {
   position: relative;
@@ -905,6 +906,7 @@ h4 {
   margin-top: 6rem;
   background-color: #f7e7e6;
   padding: 3rem 4rem;
+  animation: fadeIn 1s linear;
 }
 .often-questions .accordion-block:before {
   content: '';
@@ -1262,6 +1264,7 @@ h4 {
   margin-top: 20px;
   font-size: 15px;
   color: black;
+  animation: fadeOut 4s linear;
 }
 
 .ajax-block {
@@ -1747,4 +1750,6 @@ h4 {
   }
 }
 
-
+.styles-animate {
+  animation: fadeIn 1s linear;
+}

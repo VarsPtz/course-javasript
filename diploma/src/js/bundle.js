@@ -123,7 +123,12 @@ function accordion() {
         for (var i = 0; i < accordionHeader.length; i++) {
             if (accordionHeader[i].classList.contains('active')) {
                 accordionHeader[i].style.color = "#CC6BCB";
-                e.parentElement.nextElementSibling.style.display = "block";
+                if (e.parentElement.nextElementSibling.style.display == "block") {
+                    e.parentElement.nextElementSibling.style.display = "none";
+                    accordionHeader[i].style.color = "#333";
+                } else {
+                    e.parentElement.nextElementSibling.style.display = "block";
+                }
             } else {
                 accordionHeader[i].style.color = "";
                 accordionBlock[i].style.display = "none"; 
@@ -159,7 +164,7 @@ function addBlocks() {
 
     stylesBtn.addEventListener("click", function () {
         for (var i = 0; i < hiddenBlocks.length; i++) {
-            hiddenBlocks[i].className = "col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1";
+            hiddenBlocks[i].className = "col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1 styles-animate";
             stylesBtn.style.display = "none";
         }
     });
@@ -197,7 +202,7 @@ function ajax() {
     function loading(incomingObject) {
         statusBlock.innerHTML = "";
         statusMessage.innerHTML = "Загрузка...";
-        if (incomingObject.classList.contains("form-consultation")) {
+        if (incomingObject.classList.contains("form-consultation")) {2
             statusBlock[1].innerHTML = "";    
             statusBlock[1].style.display = "block";
             statusMessage.innerHTML = "Загрузка...";
@@ -226,6 +231,9 @@ function ajax() {
             statusBlock[1].style.display = "block";
             statusMessage.innerHTML = "Спасибо! Скоро мы с вами свяжемся.";
             statusBlock[1].appendChild(statusMessage);
+            setTimeout(() => {
+                statusBlock[1].lastElementChild.innerHTML = "";
+            }, 3000);
         } else if (incomingObject.classList.contains("form-design")) {
             hideElements(incomingObject);
             statusBlock[2].innerHTML = "";
@@ -235,6 +243,9 @@ function ajax() {
             statusBlock[2].style.display = "block";
             statusMessage.innerHTML = "Спасибо! Скоро мы с вами свяжемся.";
             statusBlock[2].appendChild(statusMessage);
+            setTimeout(() => {
+                statusBlock[2].lastElementChild.innerHTML = "";
+            }, 3000);
         } else if (incomingObject.classList.contains("form-consultation2")) {
             statusBlock[0].classList.remove("ajax-block-hide");
             statusBlock[0].classList.add("ajax-block-unhide");
@@ -578,7 +589,14 @@ function modal() {
        statusBlock = document.querySelectorAll(".ajax-block"),
        formTag = document.querySelectorAll("form");
 
-   for (let a = 0; a < btnDesign.length; a++) {
+    function clearStatusBlock() {
+        for (var i = 0; i < statusBlock.length; i++) {
+            statusBlock[i].innerHTML = "";
+            statusBlock[i].style.display = "none";
+        }
+    }
+   
+    for (let a = 0; a < btnDesign.length; a++) {
        btnDesign[a].addEventListener("click", () => {
            statusBlock[1].innerHTML = "";
            for (let y = 0; y < document.querySelector.length; y++) {
@@ -598,6 +616,8 @@ function modal() {
            popConsultation.style.display = "none";
            popGift.style.display = "none";
            document.body.style.overflow = "";
+           clearStatusBlock();
+           
        });
    }
 
@@ -606,6 +626,7 @@ function modal() {
             //Закрытие "догоняющего" модального окна "Остались вопросы?"
            popDesign.style.display = "none";
            document.body.style.overflow = "";
+           clearStatusBlock();
        } else {
            
        }       
@@ -616,6 +637,7 @@ function modal() {
            //Закрытие "догоняющего" модального окна "Остались вопросы?"
            popConsultation.style.display = "none";
            document.body.style.overflow = "";
+           clearStatusBlock();
        } else {
 
        }
@@ -643,6 +665,7 @@ function modal() {
        if (event.target.classList.contains("popup-gift")) {
            popGift.style.display = "none";
            document.body.style.overflow = "";
+           clearStatusBlock();
        } else {
 
        }
