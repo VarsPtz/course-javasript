@@ -1449,6 +1449,7 @@ h4 {
   }
   .portfolio-block {
     width: auto;
+    animation: fadeIn 1s linear;
   }
   .gift {
     background-position-x: 0;
