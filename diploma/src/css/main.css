@@ -643,6 +643,7 @@ h4 {
 .portfolio-block {
   width: 20%;
   padding: 0.5rem;
+  animation: fadeIn 1s linear;
 }
 .portfolio-block img {
   max-width: 100%;
@@ -1449,7 +1450,6 @@ h4 {
   }
   .portfolio-block {
     width: auto;
-    animation: fadeIn 1s linear;
   }
   .gift {
     background-position-x: 0;
